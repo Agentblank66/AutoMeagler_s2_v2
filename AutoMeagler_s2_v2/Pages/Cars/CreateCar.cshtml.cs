@@ -22,10 +22,12 @@ namespace AutoMeagler_s2_v2.Pages.Cars
         public AutoMeagler_s2_v2.Models.Car Car { get; set; }
         //public List<String> ImageString { get; set; }
 
+
         public IActionResult OnGet()
         {
             return Page();
         }
+
 
         public IActionResult OnPost()
         {
@@ -51,74 +53,66 @@ namespace AutoMeagler_s2_v2.Pages.Cars
         //public string UploadMessage { get; set; }
 
 
-        public IActionResult OnGet(int id)
-        {
-            Car = _carService.GetCar(id);
-            if (Car == null)
-                return RedirectToPage("/NotFound");
-
-            //UploadedImagePath = Car.ImageString; // Load saved image path
-            return Page();
-        }
+    
 
 
         // Upload the image and keep it ready, but don't save it to the car yet
-        public async Task<IActionResult> OnPostUploadAsync(int id)
-        {
-            Car = _carService.GetCar(id);
-            if (Car == null)
-                return RedirectToPage("/NotFound");
+        //public async Task<IActionResult> OnPostUploadAsync(int id)
+        //{
+        //    Car = _carService.GetCar(id);
+        //    if (Car == null)
+        //        return RedirectToPage("/NotFound");
 
-            //if (CarImage != null && CarImage.Length > 0)
-            //{
-            //    var uploadsFolder = Path.Combine(_environment.WebRootPath, "car-images");
-            //    if (!Directory.Exists(uploadsFolder))
-            //        Directory.CreateDirectory(uploadsFolder);
+        //    //if (CarImage != null && CarImage.Length > 0)
+        //    //{
+        //    //    var uploadsFolder = Path.Combine(_environment.WebRootPath, "car-images");
+        //    //    if (!Directory.Exists(uploadsFolder))
+        //    //        Directory.CreateDirectory(uploadsFolder);
 
-            //    var fileName = Path.GetFileName(CarImage.FileName);
-            //    var filePath = Path.Combine(uploadsFolder, fileName);
+        //    //    var fileName = Path.GetFileName(CarImage.FileName);
+        //    //    var filePath = Path.Combine(uploadsFolder, fileName);
 
-            //    using (var stream = new FileStream(filePath, FileMode.Create))
-            //    {
-            //        await CarImage.CopyToAsync(stream);
-            //    }
+        //    //    using (var stream = new FileStream(filePath, FileMode.Create))
+        //    //    {
+        //    //        await CarImage.CopyToAsync(stream);
+        //    //    }
 
-            //    UploadedImagePath = "/car-images/" + fileName;
-            //    UploadMessage = "Billede uploadet! Husk at gemme for at bevare billedet.";
+        //    //    UploadedImagePath = "/car-images/" + fileName;
+        //    //    UploadMessage = "Billede uploadet! Husk at gemme for at bevare billedet.";
 
-            //}
-            //else
-            //{
-            //    UploadMessage = "Vælg et gyldigt billede.";
-            //}
+        //    //}
+        //    //else
+        //    //{
+        //    //    UploadMessage = "Vælg et gyldigt billede.";
+        //    //}
 
-            return Page();
-        }
+        //    return Page();
+        //}
 
-        // Save the uploaded image path to the car permanently
-        public IActionResult OnPostSaveAsync(int id, Image image)
-        {
-            Car = _carService.GetCar(id);
-            if (Car == null)
-                return RedirectToPage("/NotFound");
+        //// Save the uploaded image path to the car permanently
+        //public IActionResult OnPostSaveAsync(int id, Image image)
+        //{
+        //    Car = _carService.GetCar(id);
+        //    if (Car == null)
+        //        return RedirectToPage("/NotFound");
 
-            ////if (!string.IsNullOrEmpty(UploadedImagePath))
-            ////{
-            ////    image.ImageString = UploadedImagePath;
+        //    ////if (!string.IsNullOrEmpty(UploadedImagePath))
+        //    ////{
+        //    ////    image.ImageString = UploadedImagePath;
 
-            ////    //Car.ImageString = UploadedImagePath;
+        //    ////    //Car.ImageString = UploadedImagePath;
 
-            ////    _imageService.AddImage(image); // Make sure this updates your database
+        //    ////    _imageService.AddImage(image); // Make sure this updates your database
 
-            ////    UploadMessage = "Billedet er gemt!";
-            ////}
-            ////else
-            ////{
-            ////    UploadMessage = "Ingen billede at gemme.";
-            ////}
+        //    ////    UploadMessage = "Billedet er gemt!";
+        //    ////}
+        //    ////else
+        //    ////{
+        //    ////    UploadMessage = "Ingen billede at gemme.";
+        //    ////}
 
-            return Page();
-        }
+        //    return Page();
+        //}
 
     }
 }
