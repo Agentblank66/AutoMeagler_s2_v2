@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMeagler_s2_v2", "AutoMeagler_s2_v2.csproj", "{A9ACE376-9BC8-4680-95EE-4A42C1A539F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMeagler_s2_v2", "AutoMeagler_s2_v2.csproj", "{A9ACE376-9BC8-4680-95EE-4A42C1A539F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestUsers", "..\UnitTestUser\UnitTestUsers.csproj", "{1DEA8C76-899D-4215-A75F-98FEFFD07CD6}"
 EndProject

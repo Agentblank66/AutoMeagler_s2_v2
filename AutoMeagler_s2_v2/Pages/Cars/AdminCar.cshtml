@@ -1,0 +1,41 @@
+﻿@page
+@model AutoMaegler.Pages.Cars.AdminCarModel
+@{
+    ViewData["Title"] = "Admin – Biler";
+}
+
+<h1>Admin – Biler</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="/Cars/CreateCar">Opret ny bil</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mærke</th>
+            <th>Model</th>
+            <th>Årgang</th>
+            <th>Pris</th>
+            <th>Til Salg</th>
+            <th>Handlinger</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var car in Model.Cars)
+    {
+        <tr>
+            <td>@car.Brand</td>
+            <td>@car.Model</td>
+            <td>@car.ModelYear</td>
+            <td>@car.Price.ToString("N0") kr</td>
+            <td>@(car.ForSale ? "Ja" : "Nej")</td>
+            <td>
+                <a asp-page="/Cars/Car" asp-route-id="@car.Id">Detaljer</a> |
+                <a asp-page="/Cars/EditCar" asp-route-id="@car.Id">Ret</a> |
+                <a asp-page="/Cars/DeleteCar" asp-route-id="@car.Id">Slet</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

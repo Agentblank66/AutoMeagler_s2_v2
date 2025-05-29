@@ -1,5 +1,9 @@
+using AutoMeagler_s2_v2.Pages.LogIn;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
 namespace AutoMeagler_s2_v2.Pages
 {
@@ -14,7 +18,13 @@ namespace AutoMeagler_s2_v2.Pages
 
         public void OnGet()
         {
-
+           //{
+            //    HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            //}
+            //else if(LogInPageModel.LoggedInEmployee == null)
+            //{
+            //    HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            //}
         }
     }
 }
