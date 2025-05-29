@@ -1,0 +1,127 @@
+﻿@page
+@using AutoMeagler_s2_v2.Models
+@model AutoMeagler_s2_v2.Pages.Admin.GetAllUsersModel
+@{
+} 
+
+<p>
+    <a class="btn btn-primary" asp-page="CreateEmployee"> Lav en ny Medarbejder </a>
+</p>
+<p>
+    <a class="btn btn-primary" asp-page="CreateCustomer"> Lav en ny Kunde </a>
+</p>
+
+
+<div class="nav-item mt-3">
+    <form method="post">
+        <div class="input-group mb-3">
+            <input asp-for="SearchString" class="form-control" placeholder="Søg efter navn" />
+            <button type="submit" class="btn btn-primary">Søg</button>
+        </div>
+    </form>
+</div>
+
+@if (Model.FilteredUsers != null && Model.FilteredUsers.Any())
+{
+    <h3 class="mt-4 text-black">Søgeresultater</h3>
+    <table class="table table-striped text-black">
+        <thead>
+            <tr>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
+                <th>Email</th>
+                
+                <th>Telefonnummer</th>
+                <th>Type</th>
+                <th>Handlinger</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.FilteredUsers)
+            {
+                var isCustomer = user is Customer;
+                var isEmployee = user is Employee;
+
+                <tr class="text-black">
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Email</td>
+                    
+                    <td>@(isCustomer ? ((Customer)user).PhoneNumber: "")</td>
+                    <td>@(isEmployee ? ((Employee)user).Type: "")</td>
+                   
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-page="/Users/EditUser" asp-route-id="@user.Id" asp-route-userType="@user.GetType().Name">Rediger</a>
+                        <a class="btn btn-danger btn-sm" asp-page="/Users/DeleteUser" asp-route-id="@user.Id" asp-route-userType="@user.GetType().Name">Slet</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+
+    <div style="display: flex; gap: 50px; align-items: flex-start; color:black">
+        <div>
+            <h3 style="color: black">Kunder</h3>
+            <table class="table table-striped text-white">
+                <thead class="text-black">
+                    <tr class="text-black">
+                        <th>Fornavn</th>
+                        <th>Efternavn</th>
+                        <th>Email</th>
+                        <th>Telefonnummer</th>
+                        <th>Handlinger</th>
+                    </tr>
+                </thead>
+                <tbody class="text-black">
+                    @foreach (Customer customer in Model.UserService.Customers)
+                    {
+                        <tr class="text-black">
+                            <td>@customer.FirstName</td>
+                            <td>@customer.LastName</td>
+                            <td>@customer.Email</td>
+                            <td>@customer.PhoneNumber</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-page="/Users/EditCustomer" asp-route-id="@customer.Id" asp-route-userType="Customer">Rediger</a>
+                                <a class="btn btn-danger btn-sm" asp-page="/Users/DeleteUser" asp-route-id="@customer.Id" asp-route-userType="Customer">Slet</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h3 style="color:black">Medarbejdere</h3>
+            <table class="table table-striped text-black">
+                <thead class="text-black">
+                    <tr>
+                        <th>Fornavn</th>
+                        <th>Efternavn</th>
+                        <th>Email</th>
+                        <th>Type medarbejder</th>
+                        <th>Handlinger</th>
+                    </tr>
+                </thead>
+                <tbody class="text-black">
+                    @foreach (Employee employee in Model.UserService.Employees)
+                    {
+                        <tr class="text-black">
+                            <td>@employee.FirstName</td>
+                            <td>@employee.LastName</td>
+                            <td>@employee.Email</td>
+                            <td>@employee.Type</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-page="/Users/EditEmployee" asp-route-id="@employee.Id" asp-route-userType="Employee">Rediger</a>
+                                <a class="btn btn-danger btn-sm" asp-page="/Users/DeleteUser" asp-route-id="@employee.Id" asp-route-userType="Employee">Slet</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+

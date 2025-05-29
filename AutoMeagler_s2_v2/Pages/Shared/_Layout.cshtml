@@ -1,0 +1,164 @@
+﻿@using AutoMeagler_s2_v2.Pages.LogIn
+<!DOCTYPE html>
+<html lang="en">
+<head style="background-color: navy">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AutoMaegler</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AutoMaegler.styles.css" asp-append-version="true" />
+</head>
+<body class="d-flex flex-column min-vh-100" style="background-color: ghostwhite;">
+    <nav style="background-color: #00002B;" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+        <div class="container">
+            <a asp-page="/Index"> <img style="height:80px; padding:10px;" src="https://www.autom.dk/img/logo.png" /> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-page="/Cars/Cars">KØB BIL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-page="/SellCars/SellCar">SÆLG BIL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-page="/Cars/LeasingCar">LEASING</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-page="/Order/GetAllOrders">Ordre</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    @if (User.IsInRole("Employee"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-page="/Users/Admin/GetAllUsers">Brugere</a>
+                        </li>
+                    }
+
+                    <li class="navbar-nav">
+                        <a class="nav-link text-white" asp-area="" asp-page="/OmOs/OmOs">OM OS</a>
+                </ul>
+            </div>
+        </div>
+        <ul class="navbar-nav">
+            @if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item nav-link text-white me-3">
+                    <span>@User.Identity.Name</span>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-page="/Users/LogIn/LogOutPage">Logout</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-page="/Users/LogIn/LogInPage">Login</a>
+                </li>
+            }
+        </ul>
+    </nav>
+    <div class="container">
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
+
+    <style>
+        .footer-span-space {
+            margin-left: 30px;
+        }
+
+        .footer {
+            background-color: #00002B;
+            color: white;
+            padding: 30px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 30px;
+            flex-wrap: wrap;
+
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer a {
+            color: lightgray;
+            text-decoration: underline;
+        }
+
+        .footer h4,
+        .footer h5 {
+            margin-top: 0;
+            margin-bottom: 5px; /* mindre bundmargen */
+            line-height: 1.2; /* tættere linjeafstand */
+        }
+
+        .footer p {
+            margin: 3px 0; /* mindre top- og bundmargen */
+            line-height: 1.4; /* tættere linjeafstand */
+        }
+
+        #footer-h5{
+            margin-top: 0px;
+        }
+    </style>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Åbningstider</h4>
+                <p>Man-Fre <span class="footer-span-space">09:00-17:30</span></p>
+                <p>Lørdag <span class="footer-span-space">Kun efter aftale</span></p>
+                <p>Søndag <span class="footer-span-space">10:00 - 16:00</span></p>
+            </div>
+            <div class="footer-column">
+                <h4>Kontakt</h4>
+                <p>Vojensvej 31-39</p>
+                <p>2610 Rødovre</p>
+                <p>Tlf.: 3672 6580</p>
+
+                <h5 id="footer-h5">Salgsafdelingen</h5>
+                <p>Tlf.: 3672 6580</p>
+                <p>E-mail: info@autom.dk</p>
+            </div>
+            <div class="footer-column">
+                <a href="https://www.facebook.com/profile.php?id=100023827401656 " target="_blank">
+                    <p style="color: white">
+                        Vores Facebook side <img style="height:40px; padding:10px;"
+                                                 src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/768px-Facebook_f_logo_%282021%29.svg.png?20210818083032"
+                    </p>
+                </a>
+                <a href="https://www.instagram.com/sjaellandsautomaegler/ " target="_blank">
+                    <p style="color: white">
+                        Vores Instagram side <img style="height:40px; padding:10px;"
+                                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png?20220518162235"
+                    </p>
+                </a>
+                <p>&copy; 2025 - AutoMaegler - <a href="/privacy">Privacy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

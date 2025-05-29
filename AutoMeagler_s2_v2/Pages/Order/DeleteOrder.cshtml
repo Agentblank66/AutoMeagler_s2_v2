@@ -1,0 +1,16 @@
+﻿@page
+@model AutoMeagler_s2_v2.Pages.Order.DeleteOrderModel
+@{
+}
+
+<h1> Slet Ordre </h1>
+<div class="alert alert-danger">
+    <h4> Er du sikker på at du vil slette denne ordre? </h4>
+    <p> Ordrenummer: @Model.Order.Id </p>
+    <p> Kunde: @Model.Order.Customer.FullName </p>
+    <p> Bil: @Model.Order.Car </p>
+    <form method="post">
+        <button type="submit" class="btn btn-danger"> Ja </button>
+        <a class="btn btn-primary" asp-page="/Order/GetAllOrders"> Nej </a>
+    </form>
+</div>

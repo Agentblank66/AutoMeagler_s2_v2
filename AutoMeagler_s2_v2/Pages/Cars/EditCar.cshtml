@@ -1,0 +1,126 @@
+﻿@page
+@model AutoMeagler_s2_v2.Pages.Cars.EditCarModel
+@{
+}
+
+<form method="post">
+	<div class="form-group">
+		<label asp-for="Car.Id" class="control-lable"></label>
+		<input asp-for="Car.Id" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.TypeOfCar" class="control-lable"></label>
+		<input asp-for="Car.TypeOfCar" class="form-control" />
+		<span asp-validation-for="Car.TypeOfCar" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Brand" class="control-lable"></label>
+		<input asp-for="Car.Brand" class="form-control" />
+		<span asp-validation-for="Car.Brand" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Model" class="control-lable"></label>
+		<input asp-for="Car.Model" class="form-control" />
+		<span asp-validation-for="Car.Model" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Color" class="control-lable"></label>
+		<input asp-for="Car.Color" class="form-control" />
+		<span asp-validation-for="Car.Color" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Fuel" class="control-lable"></label>
+		<input asp-for="Car.Fuel" class="form-control" />
+		<span asp-validation-for="Car.Fuel" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.ModelYear" class="control-lable"></label>
+		<input asp-for="Car.ModelYear" class="form-control" />
+		<span asp-validation-for="Car.ModelYear" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Price" class="control-lable"></label>
+		<input asp-for="Car.Price" class="form-control" />
+		<span asp-validation-for="Car.Price" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Mileage" class="control-lable"></label>
+		<input asp-for="Car.Mileage" class="form-control" />
+		<span asp-validation-for="Car.Mileage" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.KmPrL" class="control-lable"></label>
+		<input asp-for="Car.KmPrL" class="form-control" />
+		<span asp-validation-for="Car.KmPrL" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.TopSpeed" class="control-lable"></label>
+		<input asp-for="Car.TopSpeed" class="form-control" />
+		<span asp-validation-for="Car.TopSpeed" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Doors" class="control-lable"></label>
+		<input asp-for="Car.Doors" class="form-control" />
+		<span asp-validation-for="Car.Doors" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.HorsePower" class="control-lable"></label>
+		<input asp-for="Car.HorsePower" class="form-control" />
+		<span asp-validation-for="Car.HorsePower" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Gear" class="control-lable"></label>
+		<input asp-for="Car.Gear" class="form-control" />
+		<span asp-validation-for="Car.Gear" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Cylinders" class="control-lable"></label>
+		<input asp-for="Car.Cylinders" class="form-control" />
+		<span asp-validation-for="Car.Cylinders" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.MotorSize" class="control-lable"></label>
+		<input asp-for="Car.MotorSize" class="form-control" />
+		<span asp-validation-for="Car.MotorSize" class="text-danger"></span>
+	<div class="form-group">
+		<label asp-for="Car.ZeroToOneHundred" class="control-lable"></label>
+		<input asp-for="Car.ZeroToOneHundred" class="form-control" />
+		<span asp-validation-for="Car.ZeroToOneHundred" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Length" class="control-lable"></label>
+		<input asp-for="Car.Length" class="form-control" />
+		<span asp-validation-for="Car.Length" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.NumOffWheels" class="control-lable"></label>
+		<input asp-for="Car.NumOffWheels" class="form-control" />
+		<span asp-validation-for="Car.NumOffWheels" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.MaxPull" class="control-lable"></label>
+		<input asp-for="Car.MaxPull" class="form-control" />
+		<span asp-validation-for="Car.MaxPull" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Weight" class="control-lable"></label>
+		<input asp-for="Car.Weight" class="form-control" />
+		<span asp-validation-for="Car.Weight" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Car.Status" class="control-lable"></label>
+		<input asp-for="Car.Status" class="form-control" />
+		<span asp-validation-for="Car.Status" class="text-danger"></span>
+	</div>
+
+
+	<p>
+		<div class="form-group">
+			<input type="submit" value="Update" class="btn btn-primary" />
+		</div>
+	</p>
+</form>
+
+<p>
+	<a asp-page="/Car/GetAllCars">Back to List</a>
+</p>

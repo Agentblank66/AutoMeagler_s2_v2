@@ -1,0 +1,39 @@
+﻿@page
+@model AutoMeagler_s2_v2.Pages.Users.Admin.CreateEmployeeModel
+@{
+}
+
+<h1 class="text-black">Opret Ny Medarbejder</h1>
+
+        
+            <hr class="bg-white" />
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="@Model.Employee.FirstName" class="control-label text-black">Fornavn</label>
+                    <input asp-for="@Model.Employee.FirstName" class="form-control" />
+                    <span asp-validation-for="@Model.Employee.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Employee.LastName" class="control-label text-black">Efternavn</label>
+                    <input asp-for="@Model.Employee.LastName" class="form-control" />
+                    <span asp-validation-for="@Model.Employee.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Employee.Email" class="control-label text-black">Email</label>
+                    <input asp-for="@Model.Employee.Email" class="form-control" />
+                    <span asp-validation-for="@Model.Employee.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Employee.Password" class="control-label text-black">Adgangskode</label>
+                    <input asp-for="@Model.Employee.Password" type="password" class="form-control" />
+                    <span asp-validation-for="@Model.Employee.Password" class="text-danger"></span>
+                </div>
+                    <div class="form-group">
+                    <label asp-for="@Model.Employee.Type" class="control-label text-black">Medarbejder type</label>
+                    <input asp-for="@Model.Employee.Type" class="form-control" />
+                    <span asp-validation-for="@Model.Employee.Type" class="text-danger"></span>
+                    </div>
+                <button type="submit" class="btn btn-primary mt-3">Opret bruger</button>
+            </form>
+<div style="height: 200px;"></div>
+

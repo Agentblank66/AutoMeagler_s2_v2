@@ -1,0 +1,116 @@
+﻿@page
+@model AutoMeagler_s2_v2.Pages.Cars.CarModel
+@{
+}
+
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+
+
+
+    .container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .gallery img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .details {
+        grid-column: 1 / 2;
+    }
+
+        .details h2 {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+        }
+
+    .price {
+        color: #d32f2f;
+        font-weight: bold;
+        font-size: 1.3rem;
+        margin: 0.5rem 0;
+    }
+
+    .specs {
+        margin-top: 1rem;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .specs th, .specs td {
+            padding: 0.5rem;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+    /*        */
+
+    html, body {
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+        font-family: Arial, sans-serif !important;
+        line-height: 1.6 !important;
+    }
+
+
+    main {
+        flex: 1 !important;
+    }
+
+</style>
+
+
+
+
+
+<section class="details">
+    <h2>@Model.Car.Brand @Model.Car.Model @Model.Car.HorsePower HK</h2>
+    <p class="price">Kr. @Model.Car.Price.ToString("N0")</p>
+    <p>Årgang: @Model.Car.ModelYear | Kilometerstand: @Model.Car.Mileage.ToString("N0") km | @Model.Car.Fuel | @Model.Car.MotorSize</p>
+
+    <table class="specs">
+        <tr><th>Type af bil</th><td>@Model.Car.TypeOfCar</td></tr>
+        <tr><th>Mærke</th><td>@Model.Car.Brand</td></tr>
+        <tr><th>Model</th><td>@Model.Car.Model</td></tr>
+        <tr><th>Farve</th><td>@Model.Car.Color</td></tr>
+        <tr><th>Brændstof</th><td>@Model.Car.Fuel</td></tr>
+        <tr><th>Årgang</th><td>@Model.Car.ModelYear</td></tr>
+        <tr><th>Pris</th><td>@Model.Car.Price.ToString("N0") kr.</td></tr>
+        <tr><th>Kilometerstand</th><td>@Model.Car.Mileage.ToString("N0") km</td></tr>
+        <tr><th>Km/l</th><td>@Model.Car.KmPrL</td></tr>
+        <tr><th>Tophastighed</th><td>@Model.Car.TopSpeed km/t</td></tr>
+        <tr><th>Døre</th><td>@Model.Car.Doors</td></tr>
+        <tr><th>HK</th><td>@Model.Car.HorsePower</td></tr>
+        <tr><th>Gear</th><td>@Model.Car.Gear</td></tr>
+        <tr><th>Cylindre</th><td>@Model.Car.Cylinders</td></tr>
+        <tr><th>Motorstørrelse</th><td>@Model.Car.MotorSize L</td></tr>
+        <tr><th>0-100 km/t</th><td>@Model.Car.ZeroToOneHundred sek.</td></tr>
+        <tr><th>Længde</th><td>@Model.Car.Length mm</td></tr>
+        <tr><th>Hjul</th><td>@Model.Car.NumOffWheels</td></tr>
+        <tr><th>Trækevne</th><td>@Model.Car.MaxPull kg</td></tr>
+        <tr><th>Vægt</th><td>@Model.Car.Weight.ToString("N0") kg</td></tr>
+        <tr><th>Lagerstatus</th><td>@(Model.Car.Status ? "På lager" : "Ikke på lager")</td></tr>
+    </table>
+</section> 

@@ -1,0 +1,169 @@
+﻿@page
+@model AutoMeagler_s2_v2.Pages.SellCars.SellCarModel
+@{
+}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Sell Your Car</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .background {
+            background-image: url("https://media.licdn.com/dms/image/v2/D4E12AQGKsclxmbpr1A/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1693237612736?e=1753315200&v=beta&t=ErDSWstJpbagYjMV4vuVgYbbCRvyh6c1ugXmEYWN93g");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .form-section, .thankyou-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: black;
+            border-radius: 10px;
+            padding: 20px;
+            
+            
+            30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .thankyou-section {
+            text-align: center;
+            display: none; /* Hidden by default */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                font-weight: bold;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+        .submit-btn {
+            display: block;
+            margin: 20px auto 0 auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+            .submit-btn:hover {
+                background-color: #0056b3;
+            }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper background">
+        <div class="overlay"></div>
+
+        <div class="content">
+            <!-- Car & Contact Form Section -->
+            <div id="formContainer" class="form-section">
+                <h2>Hvilken Bil?</h2>
+                <div class="form-group">
+                    <label for="regnr">Reg. nr</label>
+                    <input type="text" id="regnr" name="regnr" />
+                </div>
+                <div class="form-group">
+                    <label for="make">Bilmærke</label>
+                    <input type="text" id="make" name="make" />
+                </div>
+                <div class="form-group">
+                    <label for="model">Model</label>
+                    <input type="text" id="model" name="model" />
+                </div>
+                <div class="form-group">
+                    <label for="hk">Hestekræfter</label>
+                    <input type="text" id="hk" name="hk" />
+                </div>
+
+                <h2>Kontaktinformation</h2>
+                <div class="form-group">
+                    <label for="name">Navn</label>
+                    <input type="text" id="name" name="name" />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone" name="phone" />
+                </div>
+
+                <button class="submit-btn" type="button" onclick="showThankYou()">Send</button>
+            </div>
+
+            <!-- Thank You Message Section -->
+            <div id="thankYouMessage" class="thankyou-section">
+                <h2>Tak for din henvendelse</h2>
+                <p>Vi kontakter dig hurtigst muligt.</p>
+            </div>
+        </div>
+
+        <footer>
+        </footer>
+    </div>
+
+    <script>
+        function showThankYou() {
+            // Hide form, show thank you
+            document.getElementById("formContainer").style.display = "none";
+            document.getElementById("thankYouMessage").style.display = "block";
+        }
+    </script>
+</body>
+</html>

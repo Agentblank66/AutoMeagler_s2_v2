@@ -1,0 +1,156 @@
+﻿@page
+@model AutoMeagler_s2_v2.Pages.Cars.CarsModel
+@{
+}
+
+
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        main {
+            color: gray;
+            padding: 20px;
+        }
+
+        .side-overlay {
+            position: fixed;
+            top: 0;
+            right: -50%;
+            width: 50%;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: right 0.3s ease-in-out;
+            padding: 20px;
+        }
+
+            .side-overlay.open {
+                right: 0;
+            }
+
+        .overlay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+            .overlay-header h3 {
+                margin: 0;
+            }
+
+        .close-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+    <h2>Eksempel på formular</h2>
+    <form action="#" method="get">
+
+        <!-- Tekstinput -->
+        <label for="SearchName">Navn:</label>
+        <input type="text" id="SearchName" name="SearchName">
+
+        <label for="brand">Vælg mærke:</label>
+        <select asp-for="Brand" asp-items="Model.BrandOptions"></select>
+
+        <br><br>
+
+        <label for="fuel">Vælg drivmiddel:</label>
+        <select asp-for="Fuel" asp-items="Model.FuelOptions" class="form-select"></select>
+
+
+        <br><br>
+
+
+       @* skal implimenteres til at bestemme rækkefølge på siden*@ 
+       @*  <label for="valg3">Vælg sorteringsmåder:</label>
+        <select id="valg3" name="valg3">
+            <option value="ja">Ja</option>
+            <option value="nej">Nej</option>
+            <option value="måske">Måske</option>
+        </select><br><br> *@
+
+        <!-- Slider -->
+        <label for="PriceMax">Maks pris:</label>
+        <input type="range" id="PriceMax " name="PriceMax " min="0" max="1000000" step="10000" value="@Model.PriceMax" />
+        <span>@Model.PriceMax</span><br><br>
+
+        <!-- Slider -->
+        <label for="KmMax">Maks KM:</label>
+        <input type="range" id="KmMax" name="KmMax" min="0" max="500000" step="5000" value="@Model.KmMax" />
+        <span>@Model.KmMax</span><br><br>
+
+        <!-- Knap til at åbne overlay -->
+        <button type="button" onclick="openOverlay()">Vælg flere felter</button><br><br>
+
+        <!-- Submit-knap -->
+        <input type="submit" value="Send">
+
+        <!-- Side Overlay -->
+        <div class="side-overlay" id="sideOverlay">
+            <div class="overlay-header">
+                <h3>Flere valgmuligheder</h3>
+                <button type="button" class="close-btn" onclick="closeOverlay()">&times;</button>
+            </div>
+            <label><input type="checkbox" name="SelectedTypes" value="SUV" @(Model.SelectedTypes?.Contains("SUV") == true ? "checked" : "") /> SUV</label><br>
+            <label><input type="checkbox" name="SelectedTypes" value="Hatchback" @(Model.SelectedTypes?.Contains("Hatchback") == true ? "checked" : "") /> Hatchback</label><br>
+            <label><input type="checkbox" name="SelectedTypes" value="Cabriolet" @(Model.SelectedTypes?.Contains("Cabriolet") == true ? "checked" : "") /> Cabriolet</label><br>
+            <label><input type="checkbox" name="SelectedTypes" value="Sedan" @(Model.SelectedTypes?.Contains("Sedan") == true ? "checked" : "") /> Sedan</label><br>
+            <label><input type="checkbox" name="SelectedTypes" value="Stationcar" @(Model.SelectedTypes?.Contains("Stationcar") == true ? "checked" : "") /> Stationcar</label><br>
+
+            <button type="button" onclick="closeOverlay()">OK</button>
+        </div>
+
+    </form>
+
+<table>
+    <tbody>
+        @if (Model.Cars != null)
+        {
+            foreach (var Car in Model.Cars)
+            {
+                <tr class="btn-secondary" style="cursor: pointer;" onclick="window.location='@Url.Page("/Cars/Car", new { id = Car.Id })'">
+                    <td>
+                        @Car.Brand
+                    </td>
+                    <td>
+                        @Car.Model
+                    </td>
+                    <td>
+                        @Car.Price
+                    </td>
+                </tr>
+            } 
+        }
+    </tbody>
+</table>
+
+
+
+
+    <script>
+        const slider = document.getElementById("justerbar");
+        const sliderValue = document.getElementById("sliderValue");
+
+        slider.addEventListener("input", function () {
+            sliderValue.textContent = slider.value;
+        });
+
+        function openOverlay() {
+            document.getElementById("sideOverlay").classList.add("open");
+        }
+
+        function closeOverlay() {
+            document.getElementById("sideOverlay").classList.remove("open");
+        }
+    </script>

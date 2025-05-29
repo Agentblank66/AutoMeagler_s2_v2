@@ -1,0 +1,135 @@
+﻿@page
+@model AutoMeagler_s2_v2.Pages.Order.GetAllOrdersModel
+@{
+}
+
+<h1> Ordre </h1>
+
+<div class="row">
+    <div class="col-4"><h5> Led Efter Navn </h5></div>
+    <div class="col-4"><h5> Filter Pris </h5></div>
+    <div class="col-4"></div>
+</div>
+
+<div class="row">
+    <div class="col-4">
+        <form method="post" class="form-inline">
+            <div class="input-group mb-3">
+                <input asp-for="SearchString" name="SearchString" class="form-control mr-1" placeholder="Skriv det navn du vil lede efter" />
+                <input type="submit" asp-page-handler="NameSearch" value="Søg" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-5">
+        <form method="post" class="form-inline">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> Min Pris </span>
+                </div>
+                <input asp-formaction="MinPrice" class="form-control mr-1" />
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> Maks Pris </span>
+                </div>
+                <input asp-formaction="MaxPrice" class="form-control mr-1" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> Min Leasing Pris </span>
+                </div>
+                <input asp-formaction="MinLeasingPris" class="form-control mr-1" />
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> Maks Leasing Pris </span>
+                </div>
+                <input asp-formaction="MaxLeasingPrice" class="form-control mr-1" />
+            </div>
+            <div class="input-group mb-3">
+                <input type="submit" asp-page-handler="PriceSearch" value="Filtrer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+        
+    <div class="col-2"></div>
+</div>
+
+<div class="col-auto">
+    <div class="col-auto">
+        <div class="d-flex flex-column align-items-start">
+            <a asp-page="/Order/CreateOrder" class="btn btn-success mb-2">Opret Ordre</a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-hover table-striped table-dark table-opacity" width="60%">
+    <colgroup>
+        <col style="width : 7%" />
+        <col style="width : 69%" />
+        <col style="width : 12%" />
+        <col style="width : 12%" />
+    </colgroup>
+    <thead>
+        <tr class="btn-secondary active">
+            <th>
+                <div class="d-flex justify-content-between p-0">
+                    <div><h5> Id </h5></div>
+                    <div>
+                        <form method="post" class="d-inline">
+                            <button type="submit" asp-page-handler="SortById" class="btn btn-link p-0" title="Sorter Via Id">
+                                <i class="fa fa-angle-up"></i>
+                            </button>
+                            <button type="submit" asp-page-handler="SortByIdDescending" class="btn btn-link p-0" title="Sorter Via Id Faldende">
+                                <i class="fa fa-angle-down"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="d-flex justify-content-between p-0">
+                    <div><h5> Kunde Navn </h5></div>
+                    <div>
+                        <a data-toggle="tooltip" title="Soter Via Navn" asp-asp-page-handler="SortByName"><i class="fade fa-angle-up"></i></a>
+                        <a data-toogle="tooltip" title="Soter Via Navn Faldende" asp-asp-page-handler="SortByNameDecending"><i class="fa fa-angle-down"></i></a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="d-flex justify-content-between p-0">
+                    <div><h5> Pris </h5></div>
+                    <div>
+                        <a data-toggle="tooltip" title="Sorter Via Pris" asp-asp-page-handler="SortByPrice"><i class="fade fa-angle-up"></i></a>
+                        <a data-toogle="tooltip" title="Sorter Via Pris Faldende" asp-asp-page-handler="SortByPriceDecending"><i class="fa fa-angle-down"></i></a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                Håndterings Metoder
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Orders != null && Model.Orders.Count > 0)
+        {
+            foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Customer.FullName</td>
+                    <td>@order.Car.Price</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" type="button" title="Rediger" asp-page="/Order/EditOrder" asp-route-id="@order.Id"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-danger btn-sm" type="button" title="Slet" asp-page="/Pages/Order/DeleteOrder" asp-route-id="@order.Id"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">Ingen ordrer fundet.</td>
+            </tr>
+        }
+    </tbody>
+</table>
