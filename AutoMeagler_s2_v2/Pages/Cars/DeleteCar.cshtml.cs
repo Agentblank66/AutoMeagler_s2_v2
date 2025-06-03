@@ -2,9 +2,11 @@ using AutoMeagler_s2_v2.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using AutoMeagler_s2_v2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AutoMeagler_s2_v2.Pages.Cars
 {
+    //[Authorize(Roles = "Employee")]
     public class DeleteCarModel : PageModel
     {
         private ICarService _CarService;
