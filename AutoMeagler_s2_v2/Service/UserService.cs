@@ -113,25 +113,25 @@ namespace AutoMeagler_s2_v2.Service
         /// <param name="user"></param>
         public void UpdateUser(User user)
         {
-            //User userToUpdate = GetUser(user.Id, user.UserTypes);
-            //if (userToUpdate != null)
-            //{
-            //    userToUpdate.FirstName = user.FirstName;
-            //    userToUpdate.LastName = user.LastName;
-            //    userToUpdate.Email = user.Email;
-            //    userToUpdate.Password = user.Password;
-            //    if (user is Employee)
-            //    {
-            //        Employee employee = (Employee)user;
-            //        ((Employee)userToUpdate).Type = employee.Type;
-            //    }
-            //    else if (user is Customer)
-            //    {
-            //        Customer customer = (Customer)user;
-            //        ((Customer)userToUpdate).WishToSell = customer.WishToSell;
-            //        ((Customer)userToUpdate).PhoneNumber = customer.PhoneNumber;
-            //    }
-            //}
+            User userToUpdate = GetUser(user.Id, user.UserTypes);
+            if (userToUpdate != null)
+            {
+                userToUpdate.FirstName = user.FirstName;
+                userToUpdate.LastName = user.LastName;
+                userToUpdate.Email = user.Email;
+                userToUpdate.Password = user.Password;
+                if (user is Employee updatedEmployee && userToUpdate is Employee existingEmployee)
+                {
+                    
+                    updatedEmployee.Type = existingEmployee.Type;
+                }
+                else if (user is Customer updatedCustomer && userToUpdate is Customer existingCustomer)
+                {
+                    
+                    existingCustomer.WishToSell = updatedCustomer.WishToSell;
+                    existingCustomer.PhoneNumber = updatedCustomer.PhoneNumber;
+                }
+            }
             _dbUserService.UpdateUser(user);
         }
 
