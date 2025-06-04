@@ -35,7 +35,7 @@ namespace AutoMeagler_s2_v2.Pages.Cars
             if (deletedCar == null)
                 return RedirectToPage("/NotFound"); //NotFound er ikke defineret endnu
 
-            return RedirectToPage("/Cars/Cars");
+            return RedirectToPage("/Cars/AdminCar");
         }
     }
 }
