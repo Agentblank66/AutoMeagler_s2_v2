@@ -1,10 +1,12 @@
 using AutoMeagler_s2_v2.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AutoMeagler_s2_v2.Pages.Cars
 {
-	public class EditCarModel : PageModel
+	//[Authorize(Roles = "Employee")]
+    public class EditCarModel : PageModel
 	{
 		private ICarService _CarService;
 

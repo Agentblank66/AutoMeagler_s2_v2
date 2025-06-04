@@ -53,6 +53,11 @@ namespace AutoMeagler_s2_v2.Pages.LogIn
             List<Customer> customers = _userService.Customers;
             foreach (Customer customer in customers)
             {
+                if (string.IsNullOrWhiteSpace(Password))
+                {
+                    Message = "Adgangskode skal udfyldes.";
+                    return Page();
+                }
 
                 if (UserName == customer.Email)
                 {
@@ -65,7 +70,6 @@ namespace AutoMeagler_s2_v2.Pages.LogIn
                     {
                         var claims = new List<Claim>
                         {
-                        new Claim(ClaimTypes.Email, customer.Email),
                         new Claim(ClaimTypes.Name, customer.Email),
                         new Claim(ClaimTypes.Role, "Customer")
                         };
@@ -92,8 +96,7 @@ namespace AutoMeagler_s2_v2.Pages.LogIn
                     {
                         var claims = new List<Claim>
                         {
-                        new Claim(ClaimTypes.Name, employee.Email),
-                        new Claim(ClaimTypes.Email, employee.Email)
+                        new Claim(ClaimTypes.Name, employee.Email)
                         };
 
                         if (employee is Employee)
@@ -101,17 +104,14 @@ namespace AutoMeagler_s2_v2.Pages.LogIn
                             claims.Add(new Claim(ClaimTypes.Role, "Employee"));
                         }
 
-                       
-
                         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
                         return RedirectToPage("/Index");
                     }
                 }
-
             }
 
-            Message = "Invalid attempt";
+            Message = "Bruger findes ikke";
             return Page();
         }
     }

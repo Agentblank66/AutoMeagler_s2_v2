@@ -5,10 +5,12 @@ using AutoMeagler_s2_v2.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Runtime.InteropServices;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AutoMeagler_s2_v2.Pages.Order
 {
-    public class OrderBuyModel : PageModel
+    //[Authorize(Roles = "Employee")]
+    public class OrderModel : PageModel
     {
         /// <summary>
         /// The service for the orders

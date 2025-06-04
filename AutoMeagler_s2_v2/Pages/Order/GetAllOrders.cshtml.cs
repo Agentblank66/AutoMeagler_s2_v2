@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using AutoMeagler_s2_v2.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AutoMeagler_s2_v2.Pages.Order
 {
+    //[Authorize(Roles = "Employee")]
     public class GetAllOrdersModel : PageModel
     {
         /// <summary>
