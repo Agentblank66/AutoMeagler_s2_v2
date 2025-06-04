@@ -22,9 +22,9 @@ namespace AutoMeagler_s2_v2.Service
         public OrderService(DbOrderService dbOrderService)
         {
             _dbOrderService = dbOrderService;
-            _orders = MockOrders.GetMockOrders();
-            //_orders = _dbOrderService.GetOrders<Order>().Result;
-            _dbOrderService.SaveOrder(_orders);
+            //_orders = MockOrders.GetMockOrders();
+            _orders = _dbOrderService.GetOrders<Order>().Result.ToList();
+            //_dbOrderService.SaveOrder(_orders);
         }
 
         public OrderService() 
@@ -49,9 +49,6 @@ namespace AutoMeagler_s2_v2.Service
         /// <exception cref="ArgumentException"></exception>
         public void AddOrder<T>(T order) where T : Order
         {
-            _orders.Add(order);
-            _dbOrderService?.AddOrder(order);
-
             switch (order)
             {
                 case OrderLeasing leasing:
@@ -66,6 +63,8 @@ namespace AutoMeagler_s2_v2.Service
                 default:
                     throw new ArgumentException("Ugyldig order type", nameof(order));
             }
+            _orders.Add(order);
+            _dbOrderService.AddOrder(order);
         }
         //public void AddOrder(Order order)
         //{

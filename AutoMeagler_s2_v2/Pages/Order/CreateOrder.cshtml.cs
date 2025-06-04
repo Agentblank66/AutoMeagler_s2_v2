@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AutoMeagler_s2_v2.Pages.Order
 {
-    public class OrderModel : PageModel
+    public class OrderBuyModel : PageModel
     {
         /// <summary>
         /// The service for the orders
@@ -19,7 +19,7 @@ namespace AutoMeagler_s2_v2.Pages.Order
         /// Constructor
         /// </summary>
         /// <param name="orderService"></param>
-        public OrderModel(IOrderService orderService)
+        public OrderBuyModel(IOrderService orderService)
         {
             _orderService = orderService;
         }
