@@ -123,7 +123,7 @@ namespace AutoMeagler_s2_v2.Service
                 if (user is Employee updatedEmployee && userToUpdate is Employee existingEmployee)
                 {
                     
-                    updatedEmployee.Type = existingEmployee.Type;
+                    existingEmployee.Type = updatedEmployee.Type;
                 }
                 else if (user is Customer updatedCustomer && userToUpdate is Customer existingCustomer)
                 {
