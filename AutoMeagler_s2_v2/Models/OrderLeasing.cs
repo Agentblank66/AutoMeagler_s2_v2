@@ -23,12 +23,12 @@ namespace AutoMeagler_s2_v2.Models
 
         [Display(Name = "Start år")]
         [Required(ErrorMessage = "Der skal være et år")]
-        [Range(typeof(int),"2025","9999", ErrorMessage = "År skal være mellem (1) og (2)")]
+        [Range(typeof(int),"0","9999", ErrorMessage = "År skal være mellem (1) og (2)")]
         public int StartYear { get; set; }
 
         [Display(Name = "Afleverings år")]
         [Required(ErrorMessage = "Der skal være et år")]
-        [Range(typeof(int), "2025", "9999", ErrorMessage = "År skal være mellem (1) og (2)")]
+        [Range(typeof(int), "0", "9999", ErrorMessage = "År skal være mellem (1) og (2)")]
         public int EndYear { get; set; }
 
         [Display(Name = "Start måned")]
