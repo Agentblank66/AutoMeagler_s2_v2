@@ -283,9 +283,6 @@ namespace AutoMeagler_s2_v2.Service
         /// <returns> A list of orders </returns>
         public IEnumerable<T> NameSearch<T>(string str) where T : Order
         {
-            if (string.IsNullOrEmpty(str))
-                return Enumerable.Empty<T>();
-
             var result = _orders.OfType<T>().Where(order => order.Customer.FullName.Contains(str, StringComparison.OrdinalIgnoreCase));
 
             return result;
