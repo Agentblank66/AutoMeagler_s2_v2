@@ -27,26 +27,26 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Min Pris </span>
                 </div>
-                <input asp-formaction="MinPrice" class="form-control mr-1" />
+                <input asp-for="MinPrice" class="form-control mr-1" />
 
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Maks Pris </span>
                 </div>
-                <input asp-formaction="MaxPrice" class="form-control mr-1" />
+                <input asp-for="MaxPrice" class="form-control mr-1" />
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Min Leasing Pris </span>
                 </div>
-                <input asp-formaction="MinLeasingPris" class="form-control mr-1" />
+                <input asp-for="MinLeasing" class="form-control mr-1" />
 
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Maks Leasing Pris </span>
                 </div>
-                <input asp-formaction="MaxLeasingPrice" class="form-control mr-1" />
+                <input asp-for="MaxLeasing" class="form-control mr-1" />
             </div>
             <div class="input-group mb-3">
-                <input type="submit" asp-page-handler="PriceSearch" value="Filtrer" class="btn btn-primary" />
+                <input type="submit" asp-page-handler="PriceFilter" value="Filtrer" class="btn btn-primary" />
             </div>
         </form>
     </div>
