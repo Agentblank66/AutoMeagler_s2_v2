@@ -53,6 +53,11 @@ namespace AutoMeagler_s2_v2.Pages.LogIn
             List<Customer> customers = _userService.Customers;
             foreach (Customer customer in customers)
             {
+                if (string.IsNullOrWhiteSpace(Password))
+                {
+                    Message = "Adgangskode skal udfyldes.";
+                    return Page();
+                }
 
                 if (UserName == customer.Email)
                 {

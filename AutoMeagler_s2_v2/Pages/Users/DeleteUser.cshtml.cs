@@ -31,15 +31,9 @@ namespace AutoMeagler_s2_v2.Users
         /// <returns>
         /// A page.
         /// </returns>
-        public IActionResult OnGet(int id, User.UserType userType)
+        public void OnGet()
         {
-
-            var user = _userService.GetUser(id, userType);
-            if (user == null)
-                return RedirectToPage("/NotFound");
-
-
-            return Page();
+            //return Page();
         }
 
         /// <summary>

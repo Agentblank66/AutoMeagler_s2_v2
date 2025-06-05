@@ -27,26 +27,26 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Min Pris </span>
                 </div>
-                <input asp-formaction="MinPrice" class="form-control mr-1" />
+                <input asp-for="MinPrice" class="form-control mr-1" />
 
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Maks Pris </span>
                 </div>
-                <input asp-formaction="MaxPrice" class="form-control mr-1" />
+                <input asp-for="MaxPrice" class="form-control mr-1" />
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Min Leasing Pris </span>
                 </div>
-                <input asp-formaction="MinLeasingPris" class="form-control mr-1" />
+                <input asp-for="MinLeasing" class="form-control mr-1" />
 
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Maks Leasing Pris </span>
                 </div>
-                <input asp-formaction="MaxLeasingPrice" class="form-control mr-1" />
+                <input asp-for="MaxLeasing" class="form-control mr-1" />
             </div>
             <div class="input-group mb-3">
-                <input type="submit" asp-page-handler="PriceSearch" value="Filtrer" class="btn btn-primary" />
+                <input type="submit" asp-page-handler="PriceFilter" value="Filtrer" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -57,7 +57,13 @@
 <div class="col-auto">
     <div class="col-auto">
         <div class="d-flex flex-column align-items-start">
-            <a asp-page="/Order/CreateOrder" class="btn btn-success mb-2">Opret Ordre</a>
+            <a asp-page="/Order/CreateOrderBuy" class="btn btn-success mb-2">Opret Købs Ordre</a>
+        </div>
+        <div class="d-flex flex-column align-items-start">
+            <a asp-page="/Order/CreateOrderLeasing" class="btn btn-success mb-2"> Opret Leasing Ordre </a>
+        </div>
+        <div class="d-flex flex-column align-items-start">
+            <a asp-page="/Order/CreateOrderSale" class="btn btn-success mb-2"> Opret Salgs Ordre </a>
         </div>
     </div>
 </div>
@@ -75,7 +81,7 @@
                 <div class="d-flex justify-content-between p-0">
                     <div><h5> Id </h5></div>
                     <div>
-                        <form method="post" class="d-inline">
+                        <form method="get" class="d-inline">
                             <button type="submit" asp-page-handler="SortById" class="btn btn-link p-0" title="Sorter Via Id">
                                 <i class="fa fa-angle-up"></i>
                             </button>
@@ -90,8 +96,8 @@
                 <div class="d-flex justify-content-between p-0">
                     <div><h5> Kunde Navn </h5></div>
                     <div>
-                        <a data-toggle="tooltip" title="Soter Via Navn" asp-asp-page-handler="SortByName"><i class="fade fa-angle-up"></i></a>
-                        <a data-toogle="tooltip" title="Soter Via Navn Faldende" asp-asp-page-handler="SortByNameDecending"><i class="fa fa-angle-down"></i></a>
+                        <a data-toggle="tooltip" title="Soter Via Navn" asp-page-handler="SortByName"><i class="fade fa-angle-up"></i></a>
+                        <a data-toggle="tooltip" title="Soter Via Navn Faldende" asp-page-handler="SortByNameDecending"><i class="fa fa-angle-down"></i></a>
                     </div>
                 </div>
             </th>
@@ -99,8 +105,8 @@
                 <div class="d-flex justify-content-between p-0">
                     <div><h5> Pris </h5></div>
                     <div>
-                        <a data-toggle="tooltip" title="Sorter Via Pris" asp-asp-page-handler="SortByPrice"><i class="fade fa-angle-up"></i></a>
-                        <a data-toogle="tooltip" title="Sorter Via Pris Faldende" asp-asp-page-handler="SortByPriceDecending"><i class="fa fa-angle-down"></i></a>
+                        <a data-toggle="tooltip" title="Sorter Via Pris" asp-page-handler="SortByPrice"><i class="fade fa-angle-up"></i></a>
+                        <a data-toggle="tooltip" title="Sorter Via Pris Faldende" asp-page-handler="SortByPriceDecending"><i class="fa fa-angle-down"></i></a>
                     </div>
                 </div>
             </th>

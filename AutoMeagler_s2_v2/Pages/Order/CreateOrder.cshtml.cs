@@ -21,7 +21,7 @@ namespace AutoMeagler_s2_v2.Pages.Order
         /// Constructor
         /// </summary>
         /// <param name="orderService"></param>
-        public OrderModel(IOrderService orderService)
+        public OrderBuyModel(IOrderService orderService)
         {
             _orderService = orderService;
         }

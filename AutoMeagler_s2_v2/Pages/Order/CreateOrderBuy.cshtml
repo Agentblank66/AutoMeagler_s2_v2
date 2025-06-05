@@ -1,0 +1,56 @@
+﻿@page
+@model AutoMeagler_s2_v2.Pages.Order.CreateOrderBuyModel
+@{
+}
+
+<h1 class="text-black"> Opret Købs Ordre </h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.OrderBuy.Id" class="control-label"> Ordre Id </label>
+        <input asp-for="@Model.OrderBuy.Id" class="form-control" />
+        <span asp-validation-for="@Model.OrderBuy.Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.OrderBuy.Car.Id" class="control-label"> Bil </label>
+        <input asp-for="@Model.OrderBuy.Car.Id" class="form-control">
+        <span asp-validation-for="@Model.OrderBuy.Car.Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.OrderBuy.Employee.Id" class="control-label"> Medarbejder </label>
+        <input asp-for="@Model.OrderBuy.Employee.Id" class="form-control" />
+        <span asp-validation-for="@Model.OrderBuy.Employee.Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.OrderBuy.Customer.Id" class="control-label"> Kunde </label>
+        <input asp-for="@Model.OrderBuy.Customer.Id" class="form-control" />
+        <span asp-validation-for="@Model.OrderBuy.Customer.Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.OrderBuy.Type" class="control-label"> Ordre Type </label>
+        <input asp-for="@Model.OrderBuy.Type" class="form-control" />
+        <span asp-validation-for="@Model.OrderBuy.Type" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.OrderBuy.BuyPrice" class="control-label"> Pris </label>
+        <input asp-for="@Model.OrderBuy.BuyPrice" class="form-control" />
+        <span asp-validation-for="@Model.OrderBuy.BuyPrice" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.OrderBuy.Year" class="control-label"> Købs År </label>
+        <input asp-for="@Model.OrderBuy.Year" class="form-control" />
+        <span asp-validation-for="@Model.OrderBuy.Year" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.OrderBuy.Month" class="control-label"> Købs Måned </label>
+        <input asp-for="@Model.OrderBuy.Month" class="form-control" />
+        <span asp-validation-for="@Model.OrderBuy.Month" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.OrderBuy.Day" class="control-label"> Købs Dag </label>
+        <input asp-for="@Model.OrderBuy.Day" class="form-control" />
+        <span asp-validation-for="@Model.OrderBuy.Day" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Opret Købs Ordre</button>
+</form>

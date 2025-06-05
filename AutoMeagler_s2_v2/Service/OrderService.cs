@@ -22,14 +22,16 @@ namespace AutoMeagler_s2_v2.Service
         public OrderService(DbOrderService dbOrderService)
         {
             _dbOrderService = dbOrderService;
-            _orders = MockOrders.GetMockOrders();
-            //_orders = _dbOrderService.GetOrders<Order>().Result;
-            _dbOrderService.SaveOrder(_orders);
+            //_orders = MockOrders.GetMockOrders();
+            _orders = _dbOrderService.GetOrders<Order>().Result.ToList();
+            //_dbOrderService.SaveOrder(_orders);
+           
         }
 
         public OrderService() 
         {
             _orders = MockOrders.GetMockOrders();
+            
         }
 
         /// <summary>
@@ -49,9 +51,6 @@ namespace AutoMeagler_s2_v2.Service
         /// <exception cref="ArgumentException"></exception>
         public void AddOrder<T>(T order) where T : Order
         {
-            _orders.Add(order);
-            _dbOrderService?.AddOrder(order);
-
             switch (order)
             {
                 case OrderLeasing leasing:
@@ -66,6 +65,8 @@ namespace AutoMeagler_s2_v2.Service
                 default:
                     throw new ArgumentException("Ugyldig order type", nameof(order));
             }
+            _orders.Add(order);
+            _dbOrderService.AddOrder(order);
         }
         //public void AddOrder(Order order)
         //{
@@ -282,9 +283,6 @@ namespace AutoMeagler_s2_v2.Service
         /// <returns> A list of orders </returns>
         public IEnumerable<T> NameSearch<T>(string str) where T : Order
         {
-            if (string.IsNullOrEmpty(str))
-                return Enumerable.Empty<T>();
-
             var result = _orders.OfType<T>().Where(order => order.Customer.FullName.Contains(str, StringComparison.OrdinalIgnoreCase));
 
             return result;
@@ -301,21 +299,21 @@ namespace AutoMeagler_s2_v2.Service
         public IEnumerable<Order> PriceFilter(double minPrice, double maxPrice, double minMonthlyPayment, double maxMonthlyPayment)
         {
             List<Order> result = new List<Order>();
-            foreach (OrderLeasing order in _orderLeasings)
+            foreach (OrderLeasing order in _orders.OfType<OrderLeasing>())
             {
                 if (order.MonthlyPayment >= minMonthlyPayment && order.MonthlyPayment <= maxMonthlyPayment)
                 {
                     result.Add(order);
                 }
             }
-            foreach (OrderBuy order in _orderBuys)
+            foreach (OrderBuy order in _orders.OfType<OrderBuy>())
             {
                 if (order.BuyPrice >= minPrice && order.BuyPrice <= maxPrice)
                 {
                     result.Add(order);
                 }
             }
-            foreach (OrderSale order in _orderSales)
+            foreach (OrderSale order in _orders.OfType<OrderSale>())
             {
                 if (order.SalePrice >= minPrice && order.SalePrice <= maxPrice)
                 {
@@ -324,6 +322,7 @@ namespace AutoMeagler_s2_v2.Service
             }
             return result;
         }
+
 
         /// <summary>
         /// A methods that sorts orders by id by using generics to do so.
