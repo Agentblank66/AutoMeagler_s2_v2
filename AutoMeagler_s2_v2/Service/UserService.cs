@@ -36,20 +36,14 @@ namespace AutoMeagler_s2_v2.Service
         /// <param name="customer"></param>
         public void AddUser<T>(T user) where T : User
         {
-            if (typeof(T) == typeof(Customer))
-            {
-                if (user is Customer customer)
-                {
-                    Customers.Add(customer);
-                }
-            }
-            else if (typeof(T) == typeof(Employee))
-            {
-                if (user is Employee employee)
-                {
-                    Employees.Add(employee);
-                }
-            }
+               if (user is Customer customer)
+               {
+                   Customers.Add(customer);
+               }
+               else if (user is Employee employee)
+               {
+                   Employees.Add(employee);
+               }
             _dbUserService.AddUser(user);
         }
 
@@ -60,13 +54,13 @@ namespace AutoMeagler_s2_v2.Service
         /// <param name="user"></param>
         public void DeleteUser<T>(T user) where T : User
         {
-            if (typeof(T) == typeof(Customer))
+            if (user is Customer customer)
             {
-                Customers.Remove(user as Customer);
+                Customers.Remove(customer);
             }
-            else if (typeof(T) == typeof(Employee))
+            else if (user is Employee employee)
             {
-                Employees.Remove(user as Employee);
+                Employees.Remove(employee);
             }
             _dbUserService.DeleteUser(user);
         }
