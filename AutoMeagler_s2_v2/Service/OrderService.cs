@@ -169,7 +169,7 @@ namespace AutoMeagler_s2_v2.Service
                 case OrderLeasing leasingOrder when existingOrder is OrderLeasing leasingToUpdate:
                     leasingToUpdate.Depositum = leasingOrder.Depositum;
                     leasingToUpdate.LeasingDateStart = leasingOrder.LeasingDateStart;
-                    leasingOrder.LeasingDateEnd = leasingOrder.LeasingDateEnd;
+                    leasingToUpdate.LeasingDateEnd = leasingOrder.LeasingDateEnd;
                     leasingToUpdate.MonthlyPayment = leasingOrder.MonthlyPayment;
                     break;
 
