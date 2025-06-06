@@ -27,6 +27,7 @@
     <table class="table table-striped text-black">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Fornavn</th>
                 <th>Efternavn</th>
                 <th>Email</th>
@@ -42,6 +43,7 @@
                 var isEmployee = user is Employee;
 
                 <tr class="text-black">
+                    <td>@user.Id</td>
                     <td>@user.FirstName</td>
                     <td>@user.LastName</td>
                     <td>@user.Email</td>
@@ -67,6 +69,7 @@ else
             <table class="table table-striped text-white">
                 <thead class="text-black">
                     <tr class="text-black">
+                        <th>Id</th>
                         <th>Fornavn</th>
                         <th>Efternavn</th>
                         <th>Email</th>
@@ -78,6 +81,7 @@ else
                     @foreach (Customer customer in Model.UserService.Customers)
                     {
                         <tr class="text-black">
+                            <td>@customer.Id</td>
                             <td>@customer.FirstName</td>
                             <td>@customer.LastName</td>
                             <td>@customer.Email</td>
@@ -97,6 +101,7 @@ else
             <table class="table table-striped text-black">
                 <thead class="text-black">
                     <tr>
+                        <th>Id</th>
                         <th>Fornavn</th>
                         <th>Efternavn</th>
                         <th>Email</th>
@@ -108,6 +113,7 @@ else
                     @foreach (Employee employee in Model.UserService.Employees)
                     {
                         <tr class="text-black">
+                            <td>@employee.Id</td>
                             <td>@employee.FirstName</td>
                             <td>@employee.LastName</td>
                             <td>@employee.Email</td>
