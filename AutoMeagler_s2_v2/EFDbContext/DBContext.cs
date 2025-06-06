@@ -4,11 +4,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace AutoMeagler_s2_v2.EFDbContext
 {
-    public class CarDBContext : DbContext
+    public class DBContext : DbContext
     {
         private readonly IConfiguration _configuration;
 
-        public CarDBContext(IConfiguration configuration)
+        public DBContext(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -21,5 +21,8 @@ namespace AutoMeagler_s2_v2.EFDbContext
         }
 
         public DbSet<Car> Cars { get; set; }
+
+        public DbSet<Image> Image { get; set; }
+
     }
 }

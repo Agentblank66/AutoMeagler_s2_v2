@@ -9,30 +9,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.IO;
 using System.Threading.Tasks;
+using AutoMeagler_s2_v2.Models;
 
 namespace AutoMeagler_s2_v2.Pages.Cars
 {
     public class CarModel : PageModel
     {
         private readonly ICarService _carService;
-        //private readonly IWebHostEnvironment _environment;
+        private readonly IImageService _imageService;
 
         public Models.Car Car { get; set; }
-        //public string ImagePath { get; set; }
 
-        //[BindProperty]
-        //public IFormFile CarImage { get; set; }
+        public Image Imagepath { get; set; }      
 
-        // This will be bound to a hidden field or stored in Car.ImagePath for the saved image
-        //[BindProperty]
-        //public string UploadedImagePath { get; set; }
-
-        //public string UploadMessage { get; set; }
-
-        public CarModel(ICarService carService)
+        public CarModel(ICarService carService, IImageService imageService)
         {
             _carService = carService;
-            //_environment = environment;
+            _imageService = imageService;
         }
 
         public IActionResult OnGet(int id)
@@ -41,7 +34,7 @@ namespace AutoMeagler_s2_v2.Pages.Cars
             if (Car == null)
                 return RedirectToPage("/NotFound");
 
-            //UploadedImagePath = Car.ImageString; // Load saved image path
+            Imagepath = _imageService.GetImageById(id);
             return Page();
         }
 

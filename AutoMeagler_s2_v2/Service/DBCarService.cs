@@ -6,9 +6,9 @@ namespace AutoMeagler_s2_v2.Service
 {
     public class DBCarService
     {
-        private readonly CarDBContext _context;
+        private readonly DBContext _context;
 
-        public DBCarService(CarDBContext context)
+        public DBCarService(DBContext context)
         {
             _context = context;
         }

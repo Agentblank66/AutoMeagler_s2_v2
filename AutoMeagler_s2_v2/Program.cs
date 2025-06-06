@@ -13,11 +13,12 @@ builder.Configuration
     .AddEnvironmentVariables(); // stadig muligt hvis du vil bruge env vars senere
 
 // add DB service
-builder.Services.AddDbContext<CarDBContext>(options =>
+builder.Services.AddDbContext<DBContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -27,8 +28,8 @@ builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddSingleton<IOrderService, OrderService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<UserService>();
-//builder.Services.AddScoped<IImageService, ImageService>();
-//builder.Services.AddScoped<DBImageService>();
+builder.Services.AddScoped<IImageService, ImageService>();
+builder.Services.AddScoped<DBImageService>();
 builder.Services.AddDbContext<UserDbContext>();
 builder.Services.AddScoped<DbUserService>();
 

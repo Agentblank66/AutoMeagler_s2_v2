@@ -6,14 +6,11 @@
         public string ImageString { get; set; }
         public int CarId { get; set; }
 
-        public string Url { get; set; } = string.Empty;
-        public Car Car { get; set; }
-
         public Image() { }
 
-        public Image(int id, string imageString, int carId)
+        public Image( string imageString, int carId)
         {
-            Id = id;
+            
             ImageString = imageString;
             CarId = carId;
         }
