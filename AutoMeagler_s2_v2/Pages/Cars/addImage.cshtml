@@ -1,0 +1,18 @@
+﻿@page "{id:int}"
+@model AutoMeagler_s2_v2.Pages.Cars.addImageModel
+@{
+    ViewData["Title"] = "Tilføj billede til bil";
+}
+
+<h2>Tilføj billede til bil</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="CarId" />
+
+    <div class="form-group">
+        <label for="CarImage">Upload billede:</label>
+        <input type="file" name="CarImage" accept="image/*" class="form-control-file" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Upload billede</button>
+</form>

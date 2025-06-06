@@ -90,6 +90,15 @@
     <p class="price">Kr. @Model.Car.Price.ToString("N0")</p>
     <p>Årgang: @Model.Car.ModelYear | Kilometerstand: @Model.Car.Mileage.ToString("N0") km | @Model.Car.Fuel | @Model.Car.MotorSize</p>
 
+    @if (Model.Imagepath != null)
+    {
+        <img src="@Model.Imagepath.ImageString" alt="Bil billede" style="max-width: 400px;" />
+    }
+    else
+    {
+        <p>Intet billede fundet for denne bil.</p>
+    }
+
     <table class="specs">
         <tr><th>Type af bil</th><td>@Model.Car.TypeOfCar</td></tr>
         <tr><th>Mærke</th><td>@Model.Car.Brand</td></tr>
