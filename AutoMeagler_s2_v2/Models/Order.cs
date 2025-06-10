@@ -26,9 +26,6 @@ namespace AutoMeagler_s2_v2.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "Order ID")]
-        [Required(ErrorMessage = "Der skal angives et ID til Order")]
-        [Range(typeof(int), "0", "10000", ErrorMessage = "ID skal være mellem (1) og (2)")]
         public int Id { get; set; }
 
         [Display(Name = "En bil")]
